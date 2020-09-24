@@ -2,12 +2,20 @@
 
 ## users テーブル
 
-|Column   |Type  |Options    |
-|---------|------|-----------|
-|nickname |string|null: false|
-|name     |string|null: false|
-|email    |string|null: false|
-|password |string|null: false|
+|   Column                  | Type  | Options   |
+|---------------------------|-------|-----------|
+|nickname                   |string |null: false|
+|name_kana                  |string |null: false|
+|name_full_width_character  |string |null: false|
+|password                   |string |null: false|
+|birthday                   |integer|null: false|
+|email                      |string |nill: false|
+
+### Association
+- has_many :users 
+- has_many :items
+- has_many :buyeruser
+- has_many :comment
 
 ## items テーブル
 
@@ -22,8 +30,26 @@
 |ship-from area        |string |nill: false|
 |Shipping days         |integer|nill: false|
 
+### Association
+- has_many :users 
+- has_many :items
+- has_many :buyeruser
+- has_many :comment
 
-## buyer テーブル
+## comment テーブル
+
+|Column   |type       |option     |
+|---------|-----------|-----------|
+|buyeruser|references |foregin_key|
+|text     |text       |nill :false|
+
+### Association
+- has_many :users 
+- has_many :items
+- has_many :buyeruser
+- has_many :comment
+
+## buyeruser テーブル
 
 |Column        |type   |option     |
 |--------------|-------|-----------|
@@ -31,29 +57,18 @@
 |buyer address |string |nill: false|
 |postal cood   |integer|nill: false|
 
-## comment テーブル
-
-|Column   |type       |option     |
-|---------|-----------|-----------|
-|buyer    |references |foregin_key|
-|text     |text       |nill :false|
+### Association
+- belongs_to :buyeruser
 
 ## shipping address テーブル
 
-|Column        |type       |option                        |
-|--------------|-----------|------------------------------|
-|shipping days |references |nill: false,foregin_key: true |
-|buyer addres  |references |nill: false,foregin_key: true |
-|buyer         |references |nill: false,foregin_key: true |
-
-
+|Column            |type       |option                        |
+|------------------|-----------|------------------------------|
+|shipping days     |references |nill: false,foregin_key: true |
+|buyer addres      |references |nill: false,foregin_key: true |
+|buyer_information |references |nill: false,foregin_key: true  |
 
 ### Association
+- belongs_to :buyeruser
 
-- has_many :users 
-- has_many :items
-- has_many :buyer
-- has_many :comment
 
-### Association
-- belogs_to :buyer

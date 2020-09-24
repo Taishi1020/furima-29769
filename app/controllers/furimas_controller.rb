@@ -7,7 +7,7 @@ class FurimasController < ApplicationController
   end
 
   def update
-    if current_user.update(furima_params)
+    if current_user.update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -16,7 +16,7 @@ class FurimasController < ApplicationController
 
   private
 
-  def furima_params
-    params.require(:furima).permit(:mame, :email)
+  def create
+    nickname(nickname: params[:nickname])
   end
 end
