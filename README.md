@@ -1,24 +1,74 @@
-# README
+# データーベースの設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+|   Column                  | Type  | Options   |
+|---------------------------|-------|-----------|
+|nickname                   |string |null: false|
+|name_kana                  |string |null: false|
+|name_full_width_character  |string |null: false|
+|password                   |string |null: false|
+|birthday                   |integer|null: false|
+|email                      |string |nill: false|
 
-* Ruby version
+### Association
+- has_many :users 
+- has_many :items
+- has_many :buyeruser
+- has_many :comment
 
-* System dependencies
+## items テーブル
 
-* Configuration
+|Column                |Type   |Options    |
+|----------------------|-------|-----------|
+|product name          |string |null: false|
+|category              |string |null: false|
+|price                 |integer|nill: false|
+|product condition     |string |nill: false|
+|product image         |string |nill: false|
+|producut description  |text   |nill: false|
+|ship-from area        |string |nill: false|
+|Shipping days         |integer|nill: false|
 
-* Database creation
+### Association
+- has_many :users 
+- has_many :items
+- has_many :buyeruser
+- has_many :comment
 
-* Database initialization
+## comment テーブル
 
-* How to run the test suite
+|Column   |type       |option     |
+|---------|-----------|-----------|
+|buyeruser|references |foregin_key|
+|text     |text       |nill :false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- has_many :users 
+- has_many :items
+- has_many :buyeruser
+- has_many :comment
 
-* Deployment instructions
+## buyeruser テーブル
 
-* ...
+|Column        |type   |option     |
+|--------------|-------|-----------|
+|phone numder  |integer|nill: false|
+|buyer address |string |nill: false|
+|postal cood   |integer|nill: false|
+
+### Association
+- belongs_to :buyeruser
+
+## shipping address テーブル
+
+|Column            |type       |option                        |
+|------------------|-----------|------------------------------|
+|shipping days     |references |nill: false,foregin_key: true |
+|buyer addres      |references |nill: false,foregin_key: true |
+|buyer_information |references |nill: false,foregin_key: true  |
+
+### Association
+- belongs_to :buyeruser
+
+
