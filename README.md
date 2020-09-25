@@ -15,49 +15,37 @@
 
 ### Association
 - has_many :items
-- has_many :buyeruser
-- has_many :comment
+- has_many :buyerusers
+- has_many :comments
 
 ## items テーブル
 
 |Column                |Type   |Options    |
 |----------------------|-------|-----------|
 |product_name          |string |null: false|
-|category              |integer|null: false|           
+|category_id           |integer|null: false|           
 |producut_description  |text   |nill: false|
-|ship-from_area        |integer|nill: false|
-|Shipping days         |integer|nill: false|
+|ship_from_area        |integer|nill: false|
+|shipping days         |integer|nill: false|
 |price                 |integer|nill: false|
-|product_condition     |integer|nill: false|
-|product_burden        |string |nill: false|
+|product_condition_id  |integer|nill: false|
+|product_burden_id     |integer|nill: false|
+|product_explantion    |text   |nill: false|
+
+### Association
+- bilongs_to :users
+- has_many :buyerusers
+
+## purchase_informationテーブル
+
+|Column        |type   |option                       |
+|--------------|-------|-----------------------------|
+|user_id       |string |nill: false,foregin_key: true|
+|item_id       |string |nill: false,foregin_key: true|
 
 ### Association
 - has_many :items
-- has_many :buyeruser
-- has_many :comment
-
-## comment テーブル
-
-|Column   |type       |option     |
-|---------|-----------|-----------|
-|buyeruser|references |foregin_key|
-|text     |text       |nill :false|
-
-### Association
-- has_many :items
-- has_many :buyeruser
-- has_many :comment
-
-## buyeruser テーブル
-
-|Column        |type   |option     |
-|--------------|-------|-----------|
-|phone_numder  |integer|nill: false|
-|buyer_address |string |nill: false|
-|postal_cood   |integer|nill: false|
-
-### Association
-- belongs_to :user
+- has_many :users
 
 ## shipping address テーブル
 
@@ -66,9 +54,16 @@
 |shipping_days     |references |nill: false,foregin_key: true |
 |buyer_addres      |integer    |nill: false                   |
 |buyer_information |references |nill: false,foregin_key: true |
+|postal code       |integer    |nill: false                   |
+|prefectures_id    |integer    |nill: false                   |
+|municipality      |string     |nill: false                   |
+|address           |string     |nill: false                   |
+|building_name     |string     |nill: false                   |
+|phone_code        |integer    |nill: false                   |
 
 ### Association
-- bilongs_to :user
+- has_many :items
+
 
 
 
