@@ -64,7 +64,7 @@
 |Column            |type       |option                        |
 |------------------|-----------|------------------------------|
 |shipping_days     |references |nill: false,foregin_key: true |
-|buyer_addres      |integer    |nill: false                  |
+|buyer_addres      |integer    |nill: false                   |
 |buyer_information |references |nill: false,foregin_key: true |
 
 ### Association
