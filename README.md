@@ -10,11 +10,10 @@
 |first_name                 |string |null: false|
 |last_name                  |string |null: false|
 |password                   |string |null: false|
-|birthday                   |integer|null: false|
+|birthday                   |date   |null: false|
 |email                      |string |nill: false|
 
 ### Association
-- has_many :users 
 - has_many :items
 - has_many :buyeruser
 - has_many :comment
@@ -24,17 +23,15 @@
 |Column                |Type   |Options    |
 |----------------------|-------|-----------|
 |product_name          |string |null: false|
-|category              |integer|null: false|
+|category              |integer|null: false|           
+|producut_description  |text   |nill: false|
+|ship-from_area        |integer|nill: false|
+|Shipping days         |integer|nill: false|
 |price                 |integer|nill: false|
 |product_condition     |integer|nill: false|
 |product_burden        |string |nill: false|
-|product_image         |string |nill: false|
-|producut_description  |text   |nill: false|
-|ship-from_area        |integer |nill: false|
-|Shipping days         |integer|nill: false|
 
 ### Association
-- has_many :users 
 - has_many :items
 - has_many :buyeruser
 - has_many :comment
@@ -47,7 +44,6 @@
 |text     |text       |nill :false|
 
 ### Association
-- has_many :users 
 - has_many :items
 - has_many :buyeruser
 - has_many :comment
@@ -61,7 +57,7 @@
 |postal_cood   |integer|nill: false|
 
 ### Association
-- belongs_to :buyeruser
+- belongs_to :user
 
 ## shipping address テーブル
 
@@ -72,6 +68,7 @@
 |buyer_information |references |nill: false,foregin_key: true |
 
 ### Association
-- belongs_to :buyeruser
+- bilongs_to :user
+
 
 
