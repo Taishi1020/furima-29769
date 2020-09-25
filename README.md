@@ -14,7 +14,7 @@
 |email                      |string |null: false|
 
 ### Association
-- belongs_to :items
+- has_many   :items
 - has_many   :purchass_informations
 
 
@@ -33,7 +33,7 @@
 |product_explantion    |text   |null: false|
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 - has_one    :purchass_information
 
 ## purchase_informationsテーブル
@@ -44,25 +44,25 @@
 |item_id       |integer    |null: false,foregin_key: true|
 
 ### Association
-- belongs_to :items
-- belongs_to :users
-- has_one    :shipping address
+- belongs_to :item
+- belongs_to :user
+- has_one    :shipping_address
 
-## shipping address テーブル
+## shipping_address テーブル
 
-|Column               |type      |option                         | 
-|---------------------|----------|-------------------------------|
+|Column               |type       |option                        | 
+|---------------------|-----------|------------------------------|
 |postal_code          |string     |                              |
 |prefectures_id       |integer    |null: false                   |
 |municipality         |string     |null: false                   |
 |address              |string     |null: false                   |
-|building_name        |string     |null: false                   |
+|building_name        |string     |                              |
 |phone_code           |string     |null: false                   |
-|purchase_information |references |nill: false,foregin_key: true |
+|purchase_information |references |null: false,foregin_key: true |
 
 ### Association
 - belongs_to :purchase_information
-
+- has_one    :purchase_information
 
 
 
