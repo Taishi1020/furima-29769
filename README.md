@@ -52,7 +52,7 @@
 
 |Column               |type       |option                        | 
 |---------------------|-----------|------------------------------|
-|postal_code          |string     |                              |
+|postal_code          |string     |nill: false                   |
 |prefectures_id       |integer    |null: false                   |
 |municipality         |string     |null: false                   |
 |address              |string     |null: false                   |
@@ -62,7 +62,6 @@
 
 ### Association
 - belongs_to :purchase_information
-- has_one    :purchase_information
 
 
 
