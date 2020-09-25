@@ -5,8 +5,10 @@
 |   Column                  | Type  | Options   |
 |---------------------------|-------|-----------|
 |nickname                   |string |null: false|
-|name_kana                  |string |null: false|
-|name_full_width_character  |string |null: false|
+|fist_name_kana             |string |null: false|
+|last_name_kana             |storing|nill: false|
+|first_name                 |string |null: false|
+|last_name                  |string |null: false|
 |password                   |string |null: false|
 |birthday                   |integer|null: false|
 |email                      |string |nill: false|
@@ -21,13 +23,14 @@
 
 |Column                |Type   |Options    |
 |----------------------|-------|-----------|
-|product name          |string |null: false|
-|category              |string |null: false|
+|product_name          |string |null: false|
+|category              |integer|null: false|
 |price                 |integer|nill: false|
-|product condition     |string |nill: false|
-|product image         |string |nill: false|
-|producut description  |text   |nill: false|
-|ship-from area        |string |nill: false|
+|product_condition     |integer|nill: false|
+|product_burden        |string |nill: false|
+|product_image         |string |nill: false|
+|producut_description  |text   |nill: false|
+|ship-from_area        |integer |nill: false|
 |Shipping days         |integer|nill: false|
 
 ### Association
@@ -53,9 +56,9 @@
 
 |Column        |type   |option     |
 |--------------|-------|-----------|
-|phone numder  |integer|nill: false|
-|buyer address |string |nill: false|
-|postal cood   |integer|nill: false|
+|phone_numder  |integer|nill: false|
+|buyer_address |string |nill: false|
+|postal_cood   |integer|nill: false|
 
 ### Association
 - belongs_to :buyeruser
@@ -64,9 +67,9 @@
 
 |Column            |type       |option                        |
 |------------------|-----------|------------------------------|
-|shipping days     |references |nill: false,foregin_key: true |
-|buyer addres      |references |nill: false,foregin_key: true |
-|buyer_information |references |nill: false,foregin_key: true  |
+|shipping_days     |references |nill: false,foregin_key: true |
+|buyer_addres      |integer    |nill: false                  |
+|buyer_information |references |nill: false,foregin_key: true |
 
 ### Association
 - belongs_to :buyeruser
