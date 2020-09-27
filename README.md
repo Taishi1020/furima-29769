@@ -6,7 +6,7 @@
 |---------------------------|-------|-----------|
 |nickname                   |string |null: false|
 |fist_name_kana             |string |null: false|
-|last_name_kana             |storing|nill: false|
+|last_name_kana             |string|nill: false|
 |first_name                 |string |null: false|
 |last_name                  |string |null: false|
 |password                   |string |null: false|
@@ -15,22 +15,22 @@
 
 ### Association
 - has_many   :items
-- has_many   :purchass_informations
+- has_many   :purchase_informations
 
 
 ## items テーブル
 
-|Column                |Type   |Options    |
-|----------------------|-------|-----------|
-|product_name          |string |null: false|
-|category_id           |integer|null: false|           
-|producut_description  |text   |null: false|
-|ship_from_area_id     |integer|null: false|
-|shipping_days_id      |integer|null: false|
-|price                 |integer|null: false|
-|product_condition_id  |integer|null: false|
-|product_burden_id     |integer|null: false|
-|product_explantion    |text   |null: false|
+|Column                |Type   |Options                       |
+|----------------------|-------|------------------------------|
+|product_name          |string |null: false                   |
+|category_id           |integer|null: false                   |           
+|product_description   |text   |null: false                   |
+|ship_from_area_id     |integer|null: false                   |
+|shipping_days_id      |integer|null: false                   |
+|price                 |integer|null: false                   |
+|product_condition_id  |integer|null: false                   |
+|product_burden_id     |integer|null: false                   |
+|user_id               |integer|null: false,foregin_key: ture |
 
 ### Association
 - belongs_to :user
