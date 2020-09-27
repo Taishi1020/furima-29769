@@ -34,7 +34,7 @@
 
 ### Association
 - belongs_to :user
-- has_one    :purchass_information
+- has_one    :purchase_information
 
 ## purchase_informationsテーブル
 
