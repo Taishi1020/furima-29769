@@ -49,6 +49,7 @@ RSpec.describe "User", type: :models do
         @user.valid?
         expect(@user.errors[:password_confirmation]).to include("doesn't match Password")
       end
+      testtest
     end
   end
 end
