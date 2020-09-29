@@ -1,68 +1,24 @@
-# データーベースの設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-|   Column                  | Type  | Options   |
-|---------------------------|-------|-----------|
-|nickname                   |string |null: false|
-|fist_name_kana             |string |null: false|
-|last_name_kana             |string|nill: false|
-|first_name                 |string |null: false|
-|last_name                  |string |null: false|
-|password                   |string |null: false|
-|birthday                   |date   |null: false|
-|email                      |string |null: false|
+Things you may want to cover:
 
-### Association
-- has_many   :items
-- has_many   :purchase_informations
+* Ruby version
 
+* System dependencies
 
-## items テーブル
+* Configuration
 
-|Column                |Type   |Options                       |
-|----------------------|-------|------------------------------|
-|product_name          |string |null: false                   |
-|category_id           |integer|null: false                   |           
-|product_description   |text   |null: false                   |
-|ship_from_area_id     |integer|null: false                   |
-|shipping_days_id      |integer|null: false                   |
-|price                 |integer|null: false                   |
-|product_condition_id  |integer|null: false                   |
-|product_burden_id     |integer|null: false                   |
-|user_id               |integer|null: false,foregin_key: ture |
+* Database creation
 
-### Association
-- belongs_to :user
-- has_one    :purchase_information
+* Database initialization
 
-## purchase_informationsテーブル
+* How to run the test suite
 
-|Column        |type       |option                       |
-|--------------|-----------|-----------------------------|
-|user_id       |integer    |null: false,foregin_key: true|
-|item_id       |integer    |null: false,foregin_key: true|
+* Services (job queues, cache servers, search engines, etc.)
 
-### Association
-- belongs_to :item
-- belongs_to :user
-- has_one    :shipping_address
+* Deployment instructions
 
-## shipping_address テーブル
-
-|Column               |type       |option                        | 
-|---------------------|-----------|------------------------------|
-|postal_code          |string     |nill: false                   |
-|prefectures_id       |integer    |null: false                   |
-|municipality         |string     |null: false                   |
-|address              |string     |null: false                   |
-|building_name        |string     |                              |
-|phone_code           |string     |null: false                   |
-|purchase_information |references |null: false,foregin_key: true |
-
-### Association
-- belongs_to :purchase_information
-
-
-
-
+* ...

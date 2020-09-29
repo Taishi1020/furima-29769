@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+<<<<<<< HEAD
 
  before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -18,5 +19,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+=======
+>>>>>>> parent of 8a9dbe5... Merge pull request #2 from Taishi1020/product
 end
 
