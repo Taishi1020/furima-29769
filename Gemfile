@@ -53,8 +53,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-<<<<<<< HEAD
-
 
 gem 'pry-rails'
 
@@ -66,5 +64,4 @@ group :production do
   gem 'rails_12factor'
 end
 
-=======
->>>>>>> parent of 8a9dbe5... Merge pull request #2 from Taishi1020/product
+
