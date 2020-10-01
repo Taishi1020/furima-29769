@@ -6,7 +6,7 @@
 |---------------------------|-------|-----------|
 |nickname                   |string |null: false|
 |fist_name_kana             |string |null: false|
-|last_name_kana             |string |nill: false|
+|last_name_kana             |string|nill: false|
 |first_name                 |string |null: false|
 |last_name                  |string |null: false|
 |password                   |string |null: false|
