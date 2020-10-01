@@ -6,7 +6,7 @@ RSpec.describe "User", type: :models do
   
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
-      it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる" do
+      it "nicknameとemail、passwordとpassword_confirmation、birthdayが存在すれば登録できる" do
         expect(@user).to be_valid
       end
       it "nicknameが6文字以下であれば登録できること" do
@@ -20,6 +20,31 @@ RSpec.describe "User", type: :models do
         @user.valid?
         expect(@user).to be_valid
       end
+      it "first_nameが全角であれば登録ができること" do
+        @user.first_name = "山田"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+      it "last_nameが全角であれば登録ができること" do
+        @user.last_name = "太郎"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+      it "first_name_kanaがカタカナであれば登録できること" do
+        @user.first_name_kana = "ヤマダ"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+      it "last_name_kanaがカタカナであれば登録ができること" do
+        @user.last_name_kana = "タロウ"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+      it "birthdayが空白ではなければ設定できること" do
+        @user.birthday = "19991020"
+        @user.valid?
+        expect(@user).to be_valid
+      end
     end
 
     context '新規登録がうまくいかないとき' do
@@ -27,6 +52,11 @@ RSpec.describe "User", type: :models do
         @user.nickname = ""
         @user.valid?
         expect(@user.errors[:nickname]).to include("can't be blank")
+      end
+      it "birthdayがない場合は登録できない" do
+        @user.birthday= ""
+        @user.valid?
+        expect(@user.errors[:birthday]).to include("can't be blank")
       end
       it "emailがない場合は登録できない" do
         @user.email = ""
@@ -43,8 +73,27 @@ RSpec.describe "User", type: :models do
         @user.valid?
         expect(@user.errors[:password]).to include("is too short (minimum is 6 characters)")
       end
-      it "passwordが存在してもpassword_confirmationが空では登録できない
-      " do
+      it "first_nameが全角で無ければ登録ができない" do
+        @user.first_name = "aaa"
+        @user.valid?
+        expect(@user.errors[:first_name]).to include("First name Full-width characters.")
+      end
+      it "last_nameが全角で無ければ登録できない" do
+        @user.last_name = "bbb"
+        @user.valid?
+        expect(@user.errors[:last_name]).to include("Last name Full-width characters.")
+      end
+      it "first_name_kanaがカタカナで無ければ登録できない" do
+        @user.first_name_kana = "あああ"
+        @user.valid?
+        expect(@user.errors[:first_name_kana]).to include("First name kana full-width katakana characters.")
+      end
+      it "last_name_kanaがカタカナで無ければ登録できない" do
+        @user.last_name_kana = "いいい"
+        @user.valid?
+        expect(@user.errors[:last_name_kana]).to include("Last name kana last-width katakana characters.")
+      end
+      it "passwordが存在してもpassword_confirmationが空では登録できない" do
         @user.password_confirmation  = ""
         @user.valid?
         expect(@user.errors[:password_confirmation]).to include("doesn't match Password")
