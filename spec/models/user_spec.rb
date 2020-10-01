@@ -41,6 +41,16 @@ RSpec.describe "User", type: :models do
         @user.valid?
         expect(@user).to be_valid
       end
+      it "emailは一意性であること" do
+        @user.email = "kkk@gmail.com"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+      it "emailは＠を含む必要がある" do
+        @user.email = "kkk@gmail.com"
+        @user.valid?
+        expect(@user).to be_valid
+      end
       it "birthdayが空白ではなければ設定できること" do
         @user.birthday = "19991020"
         @user.valid?
