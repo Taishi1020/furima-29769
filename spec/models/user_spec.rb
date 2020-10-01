@@ -101,7 +101,3 @@ RSpec.describe "User", type: :models do
     end
   end
 end
-
-  
-
-    
