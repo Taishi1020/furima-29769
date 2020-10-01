@@ -64,5 +64,3 @@
 - belongs_to :purchase_information
 
 
-
-
