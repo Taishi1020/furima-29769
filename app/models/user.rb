@@ -11,7 +11,9 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :birthday
-    validates :email, format: { with: /\A\S+\.\S+\Z/,message: "please add @ to your email"}
+
+    
+  
     validates :password, format: { with: /\A[a-zA-Z0-9]+\z/,message: "Password Include both letters and numbers."}
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]+/,message: "First name Full-width characters."}
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]+/,message: "Last name Full-width characters."}
