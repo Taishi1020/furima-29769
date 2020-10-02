@@ -13,7 +13,7 @@ class User < ApplicationRecord
     NAMEkana_VALIDATES = /\A[ァ-ヶー－]+\z/
     validates :nickname
     validates :birthday
-    validates :password, format: { with: /\A[a-zA-Z0-9]+\z/,message: "Password Include both letters and numbers."}
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/, message: "Password Include both letters and numbers."}
     validates :first_name, format: { with: NAME_VALIDATES,message: "First name Full-width characters."}
     validates :last_name, format: { with:  NAME_VALIDATES ,message: "Last name Full-width characters."}
     validates :first_name_kana, format: { with: NAMEkana_VALIDATES, message: "First name kana full-width katakana characters."}
