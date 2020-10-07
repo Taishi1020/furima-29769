@@ -23,7 +23,7 @@
 |Column                |Type   |Options                       |
 |----------------------|-------|------------------------------|
 |product_name          |string |null: false                   |
-|category_id           |integer|null: false                   |           
+|category_id           |integer|null: false                   |
 |product_description   |text   |null: false                   |
 |ship_foom_area_id     |integer|null: false                   |
 |shipping_days_id      |integer|null: false                   |
