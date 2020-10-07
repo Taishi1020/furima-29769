@@ -67,29 +67,29 @@ RSpec.describe "Item", type: :models do
       it "categoryが選択されていなかったら出品ができない" do
        @item.category_id = "1"
        @item.valid?
-       expect(@item.errors[:category_id]).to include("is not a number")
+       expect(@item.errors[:category_id]).to include("must be other than 1")
       end
       it "active_hashで実装しているprodcut_conditionはid:1が選択されていなかったら出品できない" do
        @item.product_condition_id = "1"
        @item.valid?
-       expect(@item.errors[:product_condition_id]).to include("can't be blank")
+       expect(@item.errors[:product_condition_id]).to include("must be other than 1")
       end
       it "active_hashで実装しているaciproduct_burdenはid:1が選択されていなかったら出品できない" do
        @item.product_burden_id = "1"
        @item.valid?
-       expect(@item.errors[:product_burden_id]).to include("can't be blank")
+       expect(@item.errors[:product_burden_id]).to include("must be other than 1")
       end
       it "active_hashで実装しているship_form_areaはid:1が選択されていなかったら出品できない" do
        @item.ship_form_area_id = "1"
        @item.valid?
-       expect(@item.errors[:ship_form_area_id]).to include("can't be blank")
+       expect(@item.errors[:ship_form_area_id]).to include("must be other than 1")
       end
       it "active_hashで実装しているshipping_daysはid:1が選択されている場合は出品できない" do
        @item.shipping_days_id = "1"
        @item.valid?
-       expect(@item.errors[:shipping_days_id]).to include( "can't be blank" )
+       expect(@item.errors[:shipping_days_id]).to include( "must be other than 1" )
       end
-      it "priceの値段設定が空だと登録できない" do
+      it "priceの価格は300 ~ 9999999までしか出品できない" do
         @item.price = ""
         @item.valid?
         expect(@item.errors[:price]).to include("Price Out of setting range")

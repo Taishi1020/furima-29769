@@ -13,11 +13,13 @@ class Item < ApplicationRecord
 
   validates :product_name, :category_id, :product_description, :ship_form_area_id, :shipping_days_id, :price,  :product_condition_id, :product_burden_id,  presence: true
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :product_condition_id, numericality: { other_than: 1 } 
-  validates :product_burden_id, numericality: { other_than: 1 }
-  validates :ship_form_area_id,  numericality: { other_than: 1 }
-  validates :shipping_days_id,  numericality: { other_than: 1 }
+  with_options presence: true do
+   validates :category_id, numericality: { other_than: 1 } 
+   validates :product_condition_id, numericality: { other_than: 1 } 
+   validates :product_burden_id, numericality: { other_than: 1 }
+   validates :ship_form_area_id,  numericality: { other_than: 1 }
+   validates :shipping_days_id,  numericality: { other_than: 1 }
+  end
   
   with_options presence: true do
     validates :image
