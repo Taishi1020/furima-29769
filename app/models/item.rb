@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_form_area
   has_one_attached :image
 
+  
 
   validates :product_name, :category_id, :product_description, :ship_form_area_id, :shipping_days_id, :price,  :product_condition_id, :product_burden_id,  presence: true
 

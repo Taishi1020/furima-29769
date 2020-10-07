@@ -1,6 +1,5 @@
-class ItemsController < ApplicationController
-  before_action :basic_auth
-
+class ItemsController < ApplicationController 
+ before_action :authenticate_user!
  # def index
    # @items = Item.all
  # end
@@ -28,14 +27,10 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
+    
   end
 
   private
-  def basic_auth
-    authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
-    end
-  end
 
   def item_params
     params.require(:item).permit(:image, :product_name, :category_id, :product_description, :ship_form_area_id, :shipping_days_id, :price,  :product_condition_id, :product_burden_id).merge(user_id: current_user.id)
