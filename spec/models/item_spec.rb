@@ -89,10 +89,15 @@ RSpec.describe "Item", type: :models do
        @item.valid?
        expect(@item.errors[:shipping_days_id]).to include( "must be other than 1" )
       end
-      it "priceの価格は300 ~ 9999999までしか出品できない" do
-        @item.price = ""
+      it "priceの価格は300からしか出品できない" do
+        @item.price = 200
         @item.valid?
         expect(@item.errors[:price]).to include("Price Out of setting range")
+      end
+      it "priceの価格は9999999までしか出品できない" do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors[:price]).to include("Price Out of setting range") 
       end
     end
   end
