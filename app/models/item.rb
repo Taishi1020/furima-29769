@@ -13,13 +13,12 @@ class Item < ApplicationRecord
 
  
 # 選択関係で「---」のままになっていないか検証
-  with_options numericality: { other_than: 0, message: '1' }
-    ID = numericality: { other_than: 1 } 
-   validates :category_id, ID
-   validates :product_condition_id, ID
-   validates :product_burden_id, ID
-   validates :ship_form_area_id,  ID
-   validates :shipping_days_id,  ID
+  with_options numericality: { other_than: 1, message: '1' }
+   validates :category_id
+   validates :product_condition_id
+   validates :product_burden_id, 
+   validates :ship_form_area_id,  
+   validates :shipping_days_id,  
   end
 
   with_options presence: true do
