@@ -12,8 +12,8 @@ class Item < ApplicationRecord
   
 
  
-
-  with_options presence: true do
+# 選択関係で「---」のままになっていないか検証
+  with_options numericality: { other_than: 0, message: '1' }
     ID = numericality: { other_than: 1 } 
    validates :category_id, ID
    validates :product_condition_id, ID
