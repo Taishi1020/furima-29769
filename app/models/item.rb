@@ -14,15 +14,16 @@ class Item < ApplicationRecord
  
 
   with_options presence: true do
-   validates :category_id, numericality: { other_than: 1 } 
-   validates :product_condition_id, numericality: { other_than: 1 } 
-   validates :product_burden_id, numericality: { other_than: 1 }
-   validates :ship_form_area_id,  numericality: { other_than: 1 }
-   validates :shipping_days_id,  numericality: { other_than: 1 }
+    ID = numericality: { other_than: 1 } 
+   validates :category_id, ID
+   validates :product_condition_id, ID
+   validates :product_burden_id, ID
+   validates :ship_form_area_id,  ID
+   validates :shipping_days_id,  ID
   end
 
   with_options presence: true do
-    validates :image
+   validates :image
     validates :product_name
     validates :product_description
     validates :category_id           
