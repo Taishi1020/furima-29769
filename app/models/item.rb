@@ -26,6 +26,7 @@ class Item < ApplicationRecord
     validates :product_condition_id  
     validates :product_burden_id
     validates :ship_form_area_id    
-    validates :shipping_days_id     
+    validates :shipping_days_id 
+    validates :price, format: { with: /\A[300-9999999]+\z/, message: "Price Out of setting range" }
   end
 end

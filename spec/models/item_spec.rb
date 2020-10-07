@@ -41,6 +41,11 @@ RSpec.describe "Item", type: :models do
        @item.valid?
        expect(@item).to be_valid
       end
+      it "pricceが設定されていれば当ロックできること" do
+      @item.price = "5000"
+      @item.valid?
+      expect(@item).to be_valid
+      end
     end
 
     context '出品をボタンを押した時にうまく出品されないとき' do
@@ -78,6 +83,11 @@ RSpec.describe "Item", type: :models do
        @item.shipping_days_id = ""
        @item.valid?
        expect(@item.errors[:shipping_days_id]).to include( "can't be blank" )
+      end
+      it "priceの値段設定が空だと登録できない" do
+        @item.price = ""
+        @item.valid?
+        expect(@item.errors[:price]).to include("Price Out of setting range")
       end
     end
   end
