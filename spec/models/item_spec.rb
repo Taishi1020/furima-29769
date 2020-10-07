@@ -65,27 +65,27 @@ RSpec.describe "Item", type: :models do
        expect(@item.errors[:product_description]).to include("can't be blank")
       end
       it "categoryが選択されていなかったら出品ができない" do
-       @item.category_id = ""
+       @item.category_id = "1"
        @item.valid?
        expect(@item.errors[:category_id]).to include("is not a number")
       end
-      it "prodcut_conditionが選択されていなかったら出品できない" do
-       @item.product_condition_id = ""
+      it "active_hashで実装しているprodcut_conditionはid:1が選択されていなかったら出品できない" do
+       @item.product_condition_id = "1"
        @item.valid?
        expect(@item.errors[:product_condition_id]).to include("can't be blank")
       end
-      it "product_burdenが選択されていなかったら出品できない" do
-       @item.product_burden_id = ""
+      it "active_hashで実装しているaciproduct_burdenはid:1が選択されていなかったら出品できない" do
+       @item.product_burden_id = "1"
        @item.valid?
        expect(@item.errors[:product_burden_id]).to include("can't be blank")
       end
-      it "ship_form_areaが選択されていなかったら出品できない" do
-       @item.ship_form_area_id = ""
+      it "active_hashで実装しているship_form_areaはid:1が選択されていなかったら出品できない" do
+       @item.ship_form_area_id = "1"
        @item.valid?
        expect(@item.errors[:ship_form_area_id]).to include("can't be blank")
       end
-      it "shipping_daysが選択されていなかったら出品できない" do
-       @item.shipping_days_id = ""
+      it "active_hashで実装しているshipping_daysはid:1が選択されている場合は出品できない" do
+       @item.shipping_days_id = "1"
        @item.valid?
        expect(@item.errors[:shipping_days_id]).to include( "can't be blank" )
       end
