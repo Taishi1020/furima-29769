@@ -1,5 +1,5 @@
-class ItemsController < ApplicationController 
- before_action :authenticate_user!
+class ItemsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @items = Item.all
   end
@@ -11,23 +11,22 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  #def update
-   # if current_user.update(item_params)
-    #  redirect_to root_path
-   # else
-    #  render :edit
-   # end
-  #end
+  # def update
+  # if current_user.update(item_params)
+  #  redirect_to root_path
+  # else
+  #  render :edit
+  # end
+  # end
 
   def create
     @item = Item.new(item_params)
     if @item.valid?
-       @item.save
-      return redirect_to  root_path
+      @item.save
+      redirect_to root_path
     else
       render 'new'
     end
-    
   end
 
   def show
@@ -37,6 +36,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :product_name, :category_id, :product_description, :ship_form_area_id, :shipping_days_id, :price,  :product_condition_id, :product_burden_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :product_name, :category_id, :product_description, :ship_form_area_id, :shipping_days_id, :price, :product_condition_id, :product_burden_id).merge(user_id: current_user.id)
   end
 end
