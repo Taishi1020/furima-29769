@@ -9,15 +9,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
-  # def update
-  # if current_user.update(item_params)
-  #  redirect_to root_path
-  # else
-  #  render :edit
-  # end
-  # end
+  def update
+    item = Item.find(params[:od])
+    item.update(item_params)
+  end
 
   def create
     @item = Item.new(item_params)
