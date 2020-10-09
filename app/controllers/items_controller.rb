@@ -14,9 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:od])
-    item.update(item_params)
-    if current_user.update(item_params)
+    if @item.update(item_params)
        redirect_to root_path
     else
       render :edit
