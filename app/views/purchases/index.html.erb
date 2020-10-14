@@ -32,7 +32,7 @@
     <%# /支払額の表示 %>
 
     <%= form_with model: @purchases, url: item_purchases_path, class: 'transaction-form-wrap',id:"charge-form",local: true do |f| %>
-     <%= render 'layouts/error_messages', model: @purchases%>
+     <%= render 'layouts/error_messages', model: @purchases %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -83,14 +83,14 @@
           <label class="form-text">郵便番号</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field 'depostal_co', class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+        <%= f.text_field 'postal_code', class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:ship_form_area_id, ShipFormArea.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
