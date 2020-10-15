@@ -12,17 +12,17 @@ RSpec.describe 'UserDonation', type: :models do
       it 'CVCとnumberとexp_monthとexp_year' do
        expect(@user_donation).to be_valid
       end
-      it '電話番号が空白でなければ登録できること' do
+      it '電話番号にはハイフンが不要で11桁であれば登録できること' do
         @user_donation.phone_code = '09012345678'
         @user_donation.valid?
         expect(@user_donation).to be_valid
       end
-      it '郵便番号が空白でなけれな登録できること' do
-        @user_donation.postal_code = '11-123'
+      it '郵便番号にはハイフンが必要であること' do
+        @user_donation.postal_code = '123-4567'
         @user_donation.valid?
         expect(@user_donation).to be_valid
       end
-      it '都道府県が空白でなければ登録できること' do
+      it 'prefecture_idが選択できていれば購入ができること' do
         @user_donation.prefecture_id = '2'
         @user_donation.valid?
         expect(@user_donation).to be_valid
@@ -37,8 +37,8 @@ RSpec.describe 'UserDonation', type: :models do
         @user_donation.valid?
         expect(@user_donation).to be_valid
       end
-      it '建物の名前が空白でなければ登録できること' do
-        @user_donation.building_name = '東京ビル'
+      it '建物は今回任意入力のカラムになるため、建物が空でも登録できること' do
+        @user_donation.building_name = ''
         @user_donation.valid?
         expect(@user_donation).to be_valid
       end
@@ -50,20 +50,30 @@ RSpec.describe 'UserDonation', type: :models do
         @user_donation.valid?
         expect(@user_donation.errors[:token]).to include("can't be blank")
       end
-      it '電話番号の情報が空白であれば登録できない' do
+      it '電話番号が空白であれば登録できない' do
         @user_donation.phone_code = ''
         @user_donation.valid?
         expect(@user_donation.errors[:phone_code]).to include("can't be blank")
+      end
+      it '電話番号が11桁未満であれば登録できない' do
+        @user_donation.phone_code = '09012345'
+        @user_donation.valid?
+        expect(@user_donation.errors[:phone_code]).to include("Phone number Input only number")
       end
       it '郵便番号の情報が空白のであれば登録できない' do
         @user_donation.postal_code = ''
         @user_donation.valid?
         expect(@user_donation.errors[:postal_code]).to include("can't be blank")
       end
-      it '都道府県の情報が空白であれば登録できない' do
+      it "郵便番号にはハイフンと7桁の数字が無ければ登録できない" do
         @user_donation.prefecture_id = ''
         @user_donation.valid?
-        expect(@user_donation.errors[:prefecture_id]).to include("can't be blank")
+        expect(@user_donation.errors[:prefecture_id]).to include("Postal code Input correctly")
+      end
+      it 'active_hashで実装しているprefecture_id はid:0が選択されている場合は出品できない' do
+        @user_donation.prefecture_id = '0'
+        @user_donation.valid?
+        expect(@user_donation.errors[:prefecture_id]).to include('must be other than 0')
       end
       it '市区町村の情報が空白であれば登録できない' do
         @user_donation.city = ''
@@ -74,11 +84,6 @@ RSpec.describe 'UserDonation', type: :models do
         @user_donation.addresses = ''
         @user_donation.valid?
         expect(@user_donation.errors[:addresses]).to include("can't be blank")
-      end
-      it '建物の名前の情報が空白であれば登録できない' do
-        @user_donation.building_name = ''
-        @user_donation.valid?
-        expect(@user_donation.errors[:building_name]).to include("can't be blank")
       end
     end
   end

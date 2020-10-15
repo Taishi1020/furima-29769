@@ -1,16 +1,15 @@
 class UserDonation
 
   include ActiveModel::Model
-  attr_accessor  :ostal_code, :prefecture_id, :city,  :addresses, :building_name,  :phone_code,  :purchase_informations,  :item_id,  :postal_code, :token, :user_id
+  attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building_name, :phone_code,:purchase_informations, :item_id, :postal_code,4567 :token, :user_id
 
   with_options presence: true do
    validates :token
-   validates :postal_code
-   validates :prefecture_id
+   validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "Postal code Input correctly"}
+   validates :prefecture_id 
    validates :city
    validates :addresses
-   validates :building_name
-   validates :phone_code
+   validates :phone_code, format: {with: /\A\d{11}\z/, message: "Phone number Input only number"}
   end
 
 

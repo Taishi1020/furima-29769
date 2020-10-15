@@ -1,15 +1,11 @@
 class PurchasesController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   def index
-  
    @purchases = UserDonation.new
-   #redirect_to "/items/#{purchase_information.item.id}"
-   @item = Item.find(params[:item_id])
   end
 
   def create
-    
    @purchases = UserDonation.new( purchase_information_params)
-   @item = Item.find(params[:item_id])
    if @purchases.valid?
       @purchases.save
     return redirect_to root_path
@@ -21,7 +17,11 @@ class PurchasesController < ApplicationController
   private
    
   def  purchase_information_params
-     params.require(:user_donation).permit(:postal_code, :prefecture_id, :city,  :addresses, :building_name,  :phone_code, :purchase_informations, :item_id, :token).merge(user_id: current_user.id  )
+     params.require(:user_donation).permit(:postal_code, :prefecture_id, :city,  :addresses, :building_name,  :phone_code, :purchase_informations, :item_id).merge(user_id: current_user.id, token: params[:token] )
+  end
+
+  def set_purchases_information
+    @item = Item.find(params[:item_id])
   end
 
   def donnation_params
