@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'shipping/address'
+  #get 'shipping/address'
   post 'purchase/infomations'
   devise_for :users
   root to: "items#index"
@@ -8,5 +8,5 @@ Rails.application.routes.draw do
    resources :items do
     resources :purchases
    end
-   resources :shipping_address
+   #resources :shipping_address
 end

@@ -85,6 +85,16 @@ RSpec.describe 'UserDonation', type: :models do
         @user_donation.valid?
         expect(@user_donation.errors[:addresses]).to include("can't be blank")
       end
+      it 'user_idがない場合購入できないこと' do
+        @user_donation.user_id = ''
+        @user_donation.valid?
+        expect(@user_donation.errors[:user_id]).to include("can't be blank")
+      end
+      it 'item_idがない場合は購入できない' do
+        @user_donation.item_id = ''
+        @user_donation.valid?
+        expect(@user_donation.errors[:item_id]).to include("can't be blank")
+      end
     end
   end
 end
