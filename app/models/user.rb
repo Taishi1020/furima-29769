@@ -15,7 +15,5 @@ class User < ApplicationRecord
    validates :last_name, format: { with:  NAME_VALIDATES, message: 'Last name Full-width characters.'}
    validates :first_name_kana, format: { with: NAMEkana_VALIDATES, message: 'First name kana full-width katakana characters.'}
    validates :last_name_kana, format: { with: NAMEkana_VALIDATES, message: 'Last name kana last-width katakana characters.'}
-  #  validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
   end
-
 end
