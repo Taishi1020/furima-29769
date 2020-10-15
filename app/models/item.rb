@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :product_burden
   belongs_to_active_hash :ship_form_area
   has_one_attached :image
+  has_one :purchase_information
 
   # 選択関係で「---」のままになっていないか検証
   with_options numericality: { other_than: 1, message: '1' } do
