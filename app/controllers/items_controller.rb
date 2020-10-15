@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :check_item_user, only: [:edit]
 
   def index
-    @items = Item.all
+    @items = Item.all.order{"imagae  ASC"}
   end
 
   def new
