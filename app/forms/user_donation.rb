@@ -1,7 +1,7 @@
 class UserDonation
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building_name, :phone_code,:purchase_informations, :item_id, :postal_code, :token, :user_id
+  attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building_name, :phone_code, :item_id, :postal_code, :token, :user_id
 
   with_options presence: true do
    validates :token
@@ -16,10 +16,12 @@ class UserDonation
 
 
   def save
+     # 寄付金の情報を保存
+    purchase_information  = PurchaseInformation.create(item_id: item_id, user_id: user_id)
     # 住所の情報を保存
-    Shipping.create(postal_code: postal_code, prefecture_id:  prefecture_id, city: city, addresses: addresses, building_name: building_name, purcahse_informations: purchase_informations)
-    # 寄付金の情報を保存
-    PurchaseInformation.create(item_id: item_id, user_id: user_id)
+    Shipping.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, phone_code: phone_code, addresses: addresses, building_name: building_name, purchase_information_id: purchase_information.id)
+   
+    
   end
 end
   

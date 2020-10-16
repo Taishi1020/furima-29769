@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
 
   def index
    @purchases = UserDonation.new
-   if current_user.id == @item.user_id || user_id.purchase_informations != nil 
+   if current_user.id == @item.user_id || @item.purchase_information != nil 
     redirect_to root_path
    end
   end
@@ -23,7 +23,7 @@ class PurchasesController < ApplicationController
   private
    
   def  purchase_information_params
-     params.require(:user_donation).permit(:postal_code, :prefecture_id, :city,  :addresses, :building_name,  :phone_code, :purchase_informations, :item_id).merge(user_id: current_user.id, token: params[:token] )
+     params.require(:user_donation).permit(:postal_code, :prefecture_id, :city,  :addresses, :building_name,  :phone_code).merge(user_id: current_user.id, token: params[:token], item_id: @item.id)
   end
 
   def set_item
@@ -31,14 +31,14 @@ class PurchasesController < ApplicationController
   end
 
   def donnation_params
-    params.require(:user_donation).permit(:name, :name_reading, :nickname, :postal_code, :prefecture_id, :city, :addresses, :building_name, :price)
+    params.require(:user_donation).permit(:name, :name_reading, :nickname, :postal_code, :prefecture_id, :city, :addresses, :building_name, :price )
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,
-      card: usaer_donation_params[:token],
+      card: purchase_information_params[:token],
       currency:'jpy'                 
     )
   end

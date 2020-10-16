@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 2020_10_13_032219) do
     t.string "city", null: false
     t.string "addresses", null: false
     t.string "building_name"
-    t.string "phone_code", null: false
-    t.bigint "purchase_informations_id"
+    t.string "phone_code", default: "", null: false
+    t.bigint "purchase_information_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["purchase_informations_id"], name: "index_shippings_on_purchase_informations_id"
+    t.index ["purchase_information_id"], name: "index_shippings_on_purchase_information_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
