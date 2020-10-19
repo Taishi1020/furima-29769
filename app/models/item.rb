@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to_active_hash :category
   belongs_to_active_hash :product_condition
-  belongs_to_active_hash :ShipFormArea
+  belongs_to_active_hash :ship_form_area
   belongs_to_active_hash :shipping_days
   belongs_to_active_hash :product_burden
   belongs_to_active_hash :ship_form_area
