@@ -11,8 +11,8 @@ class PurchasesController < ApplicationController
 
   def create
    @purchases = UserDonation.new( purchase_information_params)
-   pay_item
    if @purchases.valid?
+      pay_item
       @purchases.save
     return redirect_to root_path
     else
