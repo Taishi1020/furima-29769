@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
  const SaleScommission = document.getElementById('add-tax-price');
  const AlesProfit = document.getElementById('profit');
 
- console.log(ItemPrice);
+ 
  ItemPrice.addEventListener("input", function() {
  
   let price = ItemPrice.value;
